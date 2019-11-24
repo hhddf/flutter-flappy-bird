@@ -1,4 +1,5 @@
 import 'dart:async' show Timer;
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 void log(content) {
@@ -12,7 +13,10 @@ void loop() {
   });
 }
 
+double y = 180.0;
+
 void loopBody() {
+  y = y + 1;
   runApp(MyApp());
 }
 
@@ -25,23 +29,23 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
 
-  Stack stack() {
-    Stack s = new Stack(
-      children: <Widget>[
-        new Positioned(
-          left: 30.0,
-          top: 30.0,
-          child: new Container(
-            width: 100.0,
-            height: 80.0,
-            child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-          ),
-        )
-      ],
-    );
-    return s;
-  }
+Stack stack() {
+  Stack s = new Stack(
+    children: <Widget>[
+      new Positioned(
+        left: 30.0,
+        top: y,
+        child: new Container(
+          width: 100.0,
+          height: 100.0,
+          child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+        ),
+      )
+    ],
+  );
+  return s;
 }
 
 void main() {
