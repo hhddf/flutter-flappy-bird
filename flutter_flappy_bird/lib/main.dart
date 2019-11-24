@@ -1,5 +1,4 @@
 import 'dart:async' show Timer;
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 void log(content) {
@@ -25,10 +24,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: stack()
+        body: container(),
       ),
     );
   }
+}
+
+double scaleLength(number) {
+  return number * 3.0;
+}
+
+GestureDetector container() {
+  Container c = new Container(
+    color: Colors.yellow,
+    child: stack(),
+  );
+  GestureDetector gd = new GestureDetector(
+    onTap: () {
+      log('onTap');
+    },
+    child: c,
+  );
+  return gd;
 }
 
 Stack stack() {
