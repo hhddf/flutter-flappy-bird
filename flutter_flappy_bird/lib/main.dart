@@ -15,7 +15,6 @@ void loop() {
 double y = 180.0;
 
 void loopBody() {
-  y = y + 1;
   runApp(MyApp());
 }
 
@@ -42,6 +41,7 @@ GestureDetector container() {
   GestureDetector gd = new GestureDetector(
     onTap: () {
       log('onTap');
+      y += 50;
     },
     child: c,
   );
@@ -57,7 +57,9 @@ Stack stack() {
         child: new Container(
           width: 100.0,
           height: 100.0,
-          child: Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+          child: new Image(
+            image: new AssetImage('image/sprites_43.png'),
+          ),
         ),
       )
     ],
